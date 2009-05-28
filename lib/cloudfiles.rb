@@ -24,12 +24,13 @@ module CloudFiles
   require 'rexml/document'
   require 'uri'
   require 'digest/md5'
-  require 'jcode' 
   require 'time'
   require 'rubygems'
   require 'mime/types'
-
-  $KCODE = 'u'
+  if RUBY_VERSION < '1.9'
+    require 'jcode' 
+    $KCODE = 'u'
+  end
 
   $:.unshift(File.dirname(__FILE__))
   require 'cloudfiles/authentication'
